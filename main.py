@@ -91,6 +91,8 @@ def post_page():
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
+        
+        username = ''
         username = request.form['username']
         password = request.form['password']
         user = User.query.filter_by(username=username).first()
@@ -112,6 +114,7 @@ def login():
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
+    username = ''
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -137,7 +140,7 @@ def register():
                 else:
                     flash('Passwords do not match', 'error')
 
-    return render_template('register.html')
+    return render_template('register.html', username = username)
 
 @app.route('/user', methods=['POST', 'GET'])
 def user_page():
