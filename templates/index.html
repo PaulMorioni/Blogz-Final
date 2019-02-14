@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 style="margin-left: 50%;">Blog</h1>
+
+    {% if users|length ==0 %}
+    <p>No Users</p>
+    {% else %}    
+        {% for user in users %}
+        <a href="/user?user_id={{user.id}}"><p>{{user.username}} </p>
+        </a>
+        {%endfor%}
+    {%endif%}
+{%endblock%}
